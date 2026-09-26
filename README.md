@@ -12,3 +12,68 @@ y = 5
 
 ## Задача
 Найти максимальный диапазон целых чисел [-M, N], для которого вышеобозначенное утверждение верно.
+
+## Решение
+CPython использует кэш малых целых чисел.
+Все числа в диапазоне `[-5, 256]` преаллоцируются при старте интерпретатора,
+поэтому любые ссылки на них указывают на один и тот же объект в памяти.
+
+- Для `-6` и меньше — объект создаётся заново при каждом присваивании.
+- Для `257` и больше — то же самое.
+
+**Ответ: `[-5, 256]`, то есть `M = 5`, `N = 256`.**
+
+## Структура проекта
+├── main.py # решение задачи
+├── test_main.py # тесты
+├── requirements.txt # зависимости
+├── .gitignore
+└── README.md
+
+## Запуск
+
+### 1. Клонировать репозиторий
+```bash
+git clone https://github.com/spbstu-python-labs-sem5/task-1-int-optimization.git
+cd task-1-int-optimization
+```
+
+### 2. Создать виртуальное окружение
+```bash
+python3 -m venv .venv
+source .venv/bin/activate # Linux / macOS
+# .venv\Scripts\activate # Windows
+```
+
+### 3. Установить зависимости
+```bash
+pip install -r requirements.txt
+```
+Файл `requirements.txt` содержит:
+```
+pytest==8.3.4
+```
+
+### 4. Запустить решение
+```bash
+python3 main.py
+```
+Ожидаемый вывод:
+```
+Диапазон: [-5, 256]
+M = 5, N = 256
+```
+
+### 5. Запустить тесты
+```bash
+pytest -v
+```
+Ожидаемый вывод:
+```
+test_main.py::test_known_range PASSED
+test_main.py::test_boundaries PASSED
+```
+
+## Требования
+- Python 3.9+
+- pytest 8.3.4
