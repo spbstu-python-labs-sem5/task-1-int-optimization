@@ -23,11 +23,14 @@ CPython кэширует малые целые числа (small integer cache).
 мы нашли границу.
 
 ## Структура проекта
+```
+.
 ├── main.py # решение задачи
 ├── test_main.py # тесты
 ├── requirements.txt # зависимости
 ├── .gitignore
 └── README.md
+```
 
 ## Запуск
 
