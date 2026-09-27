@@ -7,16 +7,12 @@ def same_object(n: int) -> bool:
 
 def find_range() -> tuple[int, int]:
     """Возвращает (M, N) - границы диапазона [-M, N], где утверждение верно.
-    Как только встречаем число вне кэша - break, а m/n остаются на последнем нужном нам значении."""
+    Как только встречаем число вне кэша - выходим из цикла, а m/n остаются на последнем нужном нам значении."""
     m = n = 0
-    for i in range(1, 1000):
-        if not same_object(-i):
-            break
-        m = i
-    for j in range(1, 1000):
-        if not same_object(j):
-            break
-        n = j
+    while same_object(-(m + 1)):
+        m += 1
+    while same_object(n + 1):
+        n += 1
     return m, n
 
 if __name__ == "__main__":
